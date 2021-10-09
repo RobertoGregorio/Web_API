@@ -34,6 +34,7 @@ namespace Web_Api.Models.DAOS
                 this.sqlCommand.Parameters.AddWithValue("paramId", personId);
 
                 this.reader = this.sqlCommand.ExecuteReader();
+                this.reader.Read();
 
                 return (Person)this.MapperEntites<Person>(new Person());
             }
@@ -52,7 +53,7 @@ namespace Web_Api.Models.DAOS
                 this.sqlCommand.Parameters.AddWithValue("paramPersonId", personId);
                 this.sqlCommand.Parameters.AddWithValue("paramName", newPersonInfo.Name);
                 this.sqlCommand.Parameters.AddWithValue("paramCpf", newPersonInfo.CPF);
-                this.sqlCommand.Parameters.AddWithValue("paramAge", newPersonInfo.Id);
+                this.sqlCommand.Parameters.AddWithValue("paramAge", newPersonInfo.Age);
 
                 this.sqlCommand.ExecuteNonQuery();
             }

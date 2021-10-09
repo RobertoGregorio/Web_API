@@ -18,7 +18,7 @@ namespace Web_Api.Controllers
     public class HomeController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult teste(CreatePersonJsonInput createPersonJsonInput)
+        public IHttpActionResult CreatePerson(CreatePersonJsonInput createPersonJsonInput)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace Web_Api.Controllers
                 UpdatePersonDTO updatePersonDTO = JsonInputMapper.MapperJsonUpdatePerson(updatePersonJsonInput);
                 PersonService.UpdatePerson(updatePersonDTO);
 
-                return Ok(new { Status = "sucess", message = $" Informações da Pessoa Atualizadas , PersonId: {updatePersonJsonInput.OldPersonId} " });
+                return Ok(new { Status = "sucess", message = $" Informações Atualizadas , PersonId: {updatePersonJsonInput.OldPersonId} " });
             }
             catch (Exception ex)
             {
@@ -82,6 +82,9 @@ namespace Web_Api.Controllers
                 Validators.ValidateModel(deletePersonJsonInput);
 
                 DeletePersonDTO deletePersonDTO = JsonInputMapper.MapperJsonDeletePerson(deletePersonJsonInput);
+
+                PersonService.DeleterPerson(deletePersonDTO);
+
 
                 return Ok(new { Status = "sucess", message = "Pessoa Deletada" });
 

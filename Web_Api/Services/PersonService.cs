@@ -53,7 +53,6 @@ namespace Web_Api.Services
             return personDAO.GetPersonById(PersonId);
         }
 
-
         public static void UpdatePerson(UpdatePersonDTO updatePersonDTO) 
         {
             Person newPersonInfo = new Person()
@@ -73,8 +72,7 @@ namespace Web_Api.Services
         {
             long personId = deletePersonDTO.PersonId;
             new PersonDAO().DeleterPersonById(personId);
-            
-            
         }
+
     }
 }
